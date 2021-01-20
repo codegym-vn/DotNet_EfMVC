@@ -1,4 +1,3 @@
-using ProductManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Collections.Generic;
