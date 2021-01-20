@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Product\**" />
+    <Content Remove="Services\Product\**" />
+    <EmbeddedResource Remove="Services\Product\**" />
+    <None Remove="Services\Product\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2"></PackageReference>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
@@ -13,10 +20,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.0-m8.0.23" /> 
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Product\" />
   </ItemGroup>
 
 

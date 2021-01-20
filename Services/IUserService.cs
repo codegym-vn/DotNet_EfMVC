@@ -1,5 +1,5 @@
 ﻿using ProductManagement.Entities; 
-namespace ProductManagement.Services.UserService
+namespace ProductManagement.Services
 {
     public interface IUserService : IGeneralService<User>
     {

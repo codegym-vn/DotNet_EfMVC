@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using ProductManagement.Repositories;
 
-namespace ProductManagement.Services
+namespace ProductManagement.Services.ServiceImpl
 {
     public abstract class GeneralServiceImpl<TEntity, TRepository>
     where TEntity : class

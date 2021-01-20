@@ -1,7 +1,7 @@
 ﻿using ProductManagement.Entities;
-using ProductManagement.Repositories;
+using ProductManagement.Repositories; 
 
-namespace ProductManagement.Services.ProductService
+namespace ProductManagement.Services.ServiceImpl
 {
     public class ProductService : GeneralServiceImpl<Product, IProductRepository>, IProductService
     {

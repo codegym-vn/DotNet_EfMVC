@@ -1,13 +1,8 @@
-﻿using ProductManagement.Entities;
-using ProductManagement.Services.UserService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ProductManagement.Entities; 
 
 namespace ProductManagement.Repositories.RepositoryImpl
 {
-    public class UserRepository : GeneralRepositoryImpl<User, DataContext>, IUserService
+    public class UserRepository : GeneralRepositoryImpl<User, DataContext>, IUserRepository
     {
         public UserRepository(DataContext context) : base(context)
         {

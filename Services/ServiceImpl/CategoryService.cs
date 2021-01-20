@@ -1,7 +1,7 @@
 using ProductManagement.Entities; 
 using ProductManagement.Repositories; 
 
-namespace ProductManagement.Services.CategoryService
+namespace ProductManagement.Services.ServiceImpl
 {
     public class CategoryService : GeneralServiceImpl<Category, ICategoryRepository>, ICategoryService
     {

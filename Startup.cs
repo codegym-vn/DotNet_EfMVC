@@ -6,9 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProductManagement.Repositories;
 using ProductManagement.Repositories.RepositoryImpl;
-using ProductManagement.Services.CategoryService;
-using ProductManagement.Services.ProductService;
-using ProductManagement.Services.UserService;
+using ProductManagement.Services;
+using ProductManagement.Services.ServiceImpl;
 
 namespace ProductManagement
 {

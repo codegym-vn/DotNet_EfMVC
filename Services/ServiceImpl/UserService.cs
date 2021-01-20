@@ -1,11 +1,7 @@
 ﻿using ProductManagement.Entities;
-using ProductManagement.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ProductManagement.Repositories; 
 
-namespace ProductManagement.Services.UserService
+namespace ProductManagement.Services.ServiceImpl
 {
     public class UserService : GeneralServiceImpl<User, IUserRepository>, IUserService
     {

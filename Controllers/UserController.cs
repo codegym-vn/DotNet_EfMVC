@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductManagement.Constant;
-using ProductManagement.Services.CategoryService;
-using ProductManagement.Services.UserService;
+using ProductManagement.Services;
 using WebApi.Constant;
 
 namespace ProductManagement.Controllers
