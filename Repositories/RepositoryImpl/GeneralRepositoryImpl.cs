@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProductManagement.Repositories.RepositoryImpl
 {
@@ -13,37 +13,37 @@ namespace ProductManagement.Repositories.RepositoryImpl
         {
             this.context = context;
         }
-        public async Task<TEntity> Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);
-            await context.SaveChangesAsync();
+            context.SaveChanges();
             return entity;
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public List<TEntity> GetAll()
         {
-            return await context.Set<TEntity>().ToListAsync();
+            return context.Set<TEntity>().ToList();
         }
-        public async Task<TEntity> Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
             context.Entry(entity).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+            context.SaveChanges();
             return entity;
 
         }
-        public async Task<TEntity> Get(int id)
+        public TEntity Get(int id)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            return context.Set<TEntity>().Find(id);
         }
-        public async Task<TEntity> Delete(int id)
+        public TEntity Delete(int id)
         {
-            var entity = await context.Set<TEntity>().FindAsync(id);
+            var entity = context.Set<TEntity>().Find(id);
             if (entity == null)
             {
                 return entity;
             }
             context.Set<TEntity>().Remove(entity);
-            await context.SaveChangesAsync();
+            context.SaveChanges();
             return entity;
         }
     }

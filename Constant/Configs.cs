@@ -1,7 +1,7 @@
 
 namespace WebApi.Constant
 {
-    enum Config
+    enum Configs
     {
         STATUS_SUCCESS = 1,
         STATUS_ERROR = 2,

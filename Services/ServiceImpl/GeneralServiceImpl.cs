@@ -16,29 +16,29 @@ namespace ProductManagement.Services.Impl
             this.repository = repository;
         }
 
-        public async Task<TEntity> Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            return await repository.Add(entity);
+            return repository.Add(entity);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public List<TEntity> GetAll()
         {
-            return await repository.GetAll();
+            return repository.GetAll();
         }
 
-        public async Task<TEntity> Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
-            return await repository.Update(entity);
+            return repository.Update(entity);
         }
 
-        public async Task<TEntity> Get(int id)
+        public TEntity Get(int id)
         {
-            return await repository.Get(id);
+            return repository.Get(id);
         }
 
-        public async Task<TEntity> Delete(int id)
+        public TEntity Delete(int id)
         {
-            return await repository.Delete(id);
+            return repository.Delete(id);
         }
     }
 }

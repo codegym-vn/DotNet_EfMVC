@@ -23,10 +23,9 @@ namespace ProductManagement
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-
+        { 
             services.AddControllers();
-            string connectionString = @"Server=localhost;Database=CustomerManager10;user id=sa;password=123456;Trusted_Connection=false;ConnectRetryCount=0";
+            string connectionString = @"Server=localhost;Database=ProductManagement;user id=root;password=123456;";
             services.AddDbContext<DataContext>(option => option.UseMySQL(connectionString));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepositoryImpl>();
@@ -34,8 +33,6 @@ namespace ProductManagement
             services.AddScoped<IProductRepository, ProductRepositoryImpl>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository, CategoryRepositoryImpl>();
-          
-        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +46,7 @@ namespace ProductManagement
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

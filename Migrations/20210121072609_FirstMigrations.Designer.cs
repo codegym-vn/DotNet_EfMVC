@@ -9,7 +9,7 @@ using ProductManagement;
 namespace ProductManagement.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210119075347_FirstMigrations")]
+    [Migration("20210121072609_FirstMigrations")]
     partial class FirstMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

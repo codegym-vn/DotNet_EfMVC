@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProductManagement.Constant;
 using ProductManagement.Services;
+using WebApi.Constant;
 
 namespace ProductManagement.Controllers
 {
@@ -10,80 +12,54 @@ namespace ProductManagement.Controllers
         where TService : IGeneralService<TEntity>
     {
         private readonly TService service;
+        private Response response;
 
         public GeneralController(TService service)
         {
             this.service = service;
+            response = new Response();
         }
 
-        [HttpGet]
-        public virtual async Task<ActionResult<IEnumerable<TEntity>>> Index()
+        [HttpGet("get")]
+        [Authorize]
+        public Response GetAll()
         {
-            return View(await service.GetAll());
-        }
-
-
-        [HttpGet]
-        public virtual async Task<IActionResult> Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public virtual async Task<ActionResult<TEntity>> Create(TEntity t)
-        {
-            if (ModelState.IsValid)
-            {
-                await service.Add(t);
-            }
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpGet]
-        public virtual async Task<ActionResult<TEntity>> Edit(int id)
-        {
-            var t = await service.Get(id);
-            if (t == null)
-            {
-                return NotFound();
-            }
-            return View(t);
+            var data = service.GetAll();
+            response.Status = (int)Configs.STATUS_SUCCESS;
+            response.Data = data;
+            response.Message = "Success";
+            return response;
         }
 
 
-        [HttpPost]
-        public virtual async Task<IActionResult> Edit(int id, TEntity t)
+
+        [HttpPost("create")]
+        public Response Create(TEntity t)
         {
-            await service.Update(t);
-            return RedirectToAction(nameof(Index));
+            var data = service.Add(t);
+            response.Status = (int)Configs.STATUS_SUCCESS;
+            response.Data = data;
+            response.Message = "Success";
+            return response;
         }
 
-        [HttpGet]
-        public virtual async Task<IActionResult> Delete(int id)
+        [HttpPost("edit")]
+        public Response Edit(TEntity t)
         {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-
-            var t = await service.Get(id);
-            if (t == null)
-            {
-                return NotFound();
-            }
-
-            return View(t);
+            var data = service.Update(t);
+            response.Status = (int)Configs.STATUS_SUCCESS;
+            response.Data = data;
+            response.Message = "Success";
+            return response;
         }
-
-        [HttpPost]
-        public virtual async Task<ActionResult<TEntity>> DeleteConfirm(int id)
+        [HttpGet("delete")]
+        public Response Delete(int id)
         {
-            var t = await service.Delete(id);
-            if (t == null)
-            {
-                return NotFound();
-            }
-            return RedirectToAction(nameof(Index));
+            var isDel = service.Delete(id);
+            response.Status = (int)Configs.STATUS_SUCCESS;
+            response.Data = isDel;
+            response.Message = "Success";
+            return response;
         }
 
     }
