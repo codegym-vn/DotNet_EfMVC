@@ -1,6 +1,7 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,14 +24,18 @@ namespace ProductManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<ICategoryService, CategoryService>();
 
-            services.AddScoped<ICategoryRepository, CategoryRepositoryImpl>();
-            services.AddScoped<IProductRepository, ProductRepositoryImpl>();
-            services.AddScoped<IUserRepository, UserRepositoryImpl>();
             services.AddControllers();
+            string connectionString = @"Server=localhost;Database=CustomerManager10;user id=sa;password=123456;Trusted_Connection=false;ConnectRetryCount=0";
+            services.AddDbContext<DataContext>(option => option.UseMySQL(connectionString));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepositoryImpl>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository, ProductRepositoryImpl>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository, CategoryRepositoryImpl>();
+          
+        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +47,7 @@ namespace ProductManagement
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseAuthorization();

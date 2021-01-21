@@ -1,7 +1,7 @@
 ﻿using ProductManagement.Entities; 
 namespace ProductManagement.Services
 {
-    interface IProductService : IGeneralService<Product>
+    public interface IProductService : IGeneralService<Product>
     {
     }
 }

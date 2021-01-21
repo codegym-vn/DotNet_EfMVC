@@ -1,5 +1,6 @@
 ﻿using ProductManagement.Entities;
-using ProductManagement.Repositories; 
+using ProductManagement.Repositories;
+using ProductManagement.Services.Impl;
 
 namespace ProductManagement.Services.ServiceImpl
 {

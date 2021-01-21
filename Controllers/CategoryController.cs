@@ -1,43 +1,26 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProductManagement.Constant;
+using ProductManagement.Entities;
 using ProductManagement.Services;
-using WebApi.Constant;
+ 
 
 namespace ProductManagement.Controllers
 {
     [Authorize]
     [ApiController]
     [Route("api/category")]
-    public class CategoryController : ControllerBase
+    public class CategoryController : GeneralController<Category, ICategoryService>
     {
-        private Response response;
-        private readonly ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        private ICategoryService service;
+        public CategoryController(ICategoryService _service) : base(_service)
         {
-            response = new Response();
-            _categoryService = categoryService;
+            service = _service;
+        }
+        public void Add()
+        {
+            service.Add(new Category());
         }
 
-        [HttpGet]
-        public Response Get()
-        {
-            var objectives = "";
-            response.Status = (int)Config.STATUS_SUCCESS;
-            response.Data = objectives;
-            response.Message = "Success";
-            return response;
-        }
-
-        [HttpGet]
-        public Response Delete(int id)
-        {
-            var isDeleted = false;
-            response.Status = (int)Config.STATUS_SUCCESS;
-            response.Data = isDeleted;
-            response.Message = "Success";
-            return response;
-        }
     }
 }
