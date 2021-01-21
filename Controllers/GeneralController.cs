@@ -20,8 +20,8 @@ namespace ProductManagement.Controllers
             response = new Response();
         }
 
-        [HttpGet("get")]
-        [Authorize]
+
+        [HttpGet("get")] 
         public Response GetAll()
         {
             var data = service.GetAll();
